@@ -9,7 +9,9 @@
  * License: GPL2
  *
  * @package maintenance-mode
- *  * @license GPL2+
+ * @copyright Copyright (c) 2020, Liz Laffitte
+ * 
+ * @license GPL2+
 */
 
 /**
@@ -20,7 +22,7 @@
  *
  * @return void
  */
-function ng_maintenance_mode() {
+function ll_maintenance_mode() {
 	global $pagenow;
 	if ( $pagenow !== 'wp-login.php' && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
 		header( $_SERVER["SERVER_PROTOCOL"] . ' 503 Service Temporarily Unavailable', true, 503 );
@@ -32,4 +34,4 @@ function ng_maintenance_mode() {
 	}
 }
 
-add_action( 'wp_loaded', 'ng_maintenance_mode' );
+add_action( 'wp_loaded', 'll_maintenance_mode' );
